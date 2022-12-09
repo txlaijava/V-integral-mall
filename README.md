@@ -106,7 +106,7 @@ if(redirect!=null){
  //redirect为商城直达的目标页面地址，如果要跳转的目标页面不是积分商城首页，改地址必须配置
  hshTable.Add("redirect", redirect);
 }
-url = duiba.BuildUrlWithSign(url, hshTable, appKey, appSecret);
+url = yummall.BuildUrlWithSign(url, hshTable, appKey, appSecret);
 ```
 
 ## 用户积分扣除接口 {#用户积分扣除接口}
@@ -128,7 +128,7 @@ url = duiba.BuildUrlWithSign(url, hshTable, appKey, appSecret);
 | ip | no | string | 255 | 用户ip，不保证获取到 |
 | waitAudit | no | boolean |  | 是否需要审核\(如需在自身系统进行审核处理，请记录下此信息\) |
 | params | no | string | 255 | 详情参数，不同的类型，返回不同的内容，中间用英文冒号分隔。\(支付宝类型带中文，请用utf-8进行解码\) 实物商品：返回收货信息\(姓名:手机号:省份:城市:区域:详细地址\)、支付宝：返回账号信息\(支付宝账号:实名\)、话费：返回手机号、QB：返回QQ号 |
-| sign | yes | string | 255 | MD5签名，详见[签名规则](http://docs.duiba.com.cn/tech_doc_book/appendix/sign_rule.html) |
+| sign | yes | string | 255 | MD5签名，详见签名规则 |
 
 #### 响应参数 {#响应参数}
 
@@ -231,9 +231,9 @@ public Hashtable parseCreditConsume(string appKey,string appSecret,HttpRequest r
     if(request.Params["timestamp"] == null ){
         throw new Exception("timestamp can't be null");
     }
-    Hashtable hshTable = duiba.GetUrlParams(request);
+    Hashtable hshTable = yummall.GetUrlParams(request);
 
-    bool verify=duiba.SignVerify(appSecret,hshTable);
+    bool verify=yummall.SignVerify(appSecret,hshTable);
     if(!verify){
         throw new Exception("sign verify fail");
     }
@@ -330,9 +330,9 @@ function parseCreditNotify(string appKey,string appSecret,HttpRequest request)
     if(request.Params["timestamp"] == null ){
         throw new Exception("timestamp can't be null");
     }
-    Hashtable hshTable = duiba.GetUrlParams(request);
+    Hashtable hshTable = yummall.GetUrlParams(request);
 
-    bool verify=duiba.SignVerify(appSecret,hshTable);
+    bool verify=yummall.SignVerify(appSecret,hshTable);
     if(!verify){
         throw new Exception("sign verify fail");
     }
