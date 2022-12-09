@@ -1,0 +1,381 @@
+.edit-goods-form .form-group {
+  padding-left: 130px
+}
+
+.edit-goods-form .control-label {
+  width: 120px
+}
+
+.edit-goods-form .pending-success-text textarea {
+  height: 120px
+}
+
+.edit-goods-form .color-group {
+  margin-top: 20px;
+  padding-left: 80px
+}
+
+.edit-goods-form .color-group .control-label {
+  font-weight: 400;
+  width: 80px
+}
+
+.edit-goods-form .color-group > .form-control {
+  display: inline-block;
+  margin-right: 20px;
+  width: 300px;
+  padding-left: 25px
+}
+
+.edit-goods-form .color-group .iconhandle {
+  margin-right: 20px
+}
+
+.edit-goods-form .color-group .color-input-pre {
+  position: absolute;
+  top: 11px;
+  left: 90px;
+  font-size: 12px
+}
+
+.edit-goods-form .color-group .colorpicker-trigger .iconhandle {
+  display: none
+}
+
+.edit-goods-form .select-split {
+  display: inline-block;
+  line-height: 34px;
+  font-size: 14px;
+  margin: 0 5px
+}
+
+.edit-goods-form .DAY {
+  position: absolute;
+  font-size: 14px;
+  left: 10px;
+  height: 100%;
+  line-height: 34px
+}
+
+.edit-goods-form .DAYTIP {
+  position: absolute;
+  font-size: 14px;
+  top: 32px;
+  left: 580px;
+  height: 34px;
+  line-height: 34px;
+  color: #888
+}
+
+.edit-goods-form .class-DAY {
+  padding-left: 38px
+}
+
+.exchange-limit .form-group, .level-limit .form-group {
+  padding-left: 110px
+}
+
+.exchange-limit .control-label, .level-limit .control-label {
+  font-weight: 400;
+  width: 100px
+}
+
+.exchange-limit .checkbox-control, .level-limit .checkbox-control {
+  margin-right: 10px
+}
+
+.exchange-limit .form-group {
+  padding-left: 125px
+}
+
+.exchange-limit .control-label {
+  width: 115px
+}
+
+.credit-money-input .input-with-addon {
+  width: 300px;
+  display: inline-table
+}
+
+.credit-money-input .icontoolbar {
+  color: #29b6b0;
+  line-height: 34px;
+  display: inline-block;
+  margin: 0 10px;
+  vertical-align: top
+}
+
+.exchange-amb .form-group {
+  padding-left: 90px
+}
+
+.exchange-amb .control-label {
+  width: 80px;
+  font-weight: 400
+}
+
+.exchange-amb .unity-input {
+  display: inline-table;
+  width: 120px;
+  margin-right: 15px
+}
+
+.exchange-amb .radio-label {
+  margin-right: 15px
+}
+
+.exchange-amb .select-group {
+  margin-right: 15px;
+  width: 160px
+}
+
+.exchange-amb .input-box {
+  display: inline-block
+}
+
+.exchange-amb .input-box, .exchange-amb .link, .exchange-amb .radio-label, .exchange-amb .select-group {
+  vertical-align: top
+}
+
+.exchange-amb .link {
+  display: inline-block;
+  line-height: 34px;
+  text-decoration: underline
+}
+
+.form-times-limit .select-group {
+  width: 90px
+}
+
+.select-group .select-control{
+  position: relative;
+  width: 85px;
+  height: 32px;
+  border: 0;
+  background-color: #fff;
+  font-size: 14px;
+  outline: 0;
+  -webkit-appearance: inherit;
+  -moz-appearance: inherit;
+}
+
+.select-group   .input-group-addon{
+  width: 100%;
+  white-space: nowrap;
+  padding: 0 0px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-left: 0;
+  border-radius: 2px;
+  font-size: 14px;
+  line-height: 1;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.single-gear .form-group {
+  padding-left: 80px
+}
+
+.single-gear .control-label {
+  width: 70px;
+  font-weight: 400
+}
+
+.multi-gear .form-control {
+  width: 80%
+}
+
+.multi-gear .add-gear-btn {
+  display: block;
+  margin-top: 15px;
+  font-size: 14px;
+  color: #29b6b0
+}
+
+.multi-gear .input-with-addon {
+  width: 80%
+}
+
+.multi-gear .input-with-addon .form-control {
+  width: 100%
+}
+
+.multi-gear .th-operate {
+  width: 60px
+}
+
+.image-upload-container.w-640-h-280 {
+  margin-top: 0;
+  height: 114px
+}
+
+.image-upload-container.w-640-h-280 .upload-area {
+  height: 112px
+}
+
+.image-upload-container.w-640-h-280 .img > p {
+  width: 229px;
+  height: 100px;
+  background: #d8d8d8 url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAAAuCAMAAACiV5+BAAAAgVBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9d3yJTAAAAKnRSTlMAS/Di+/hZBYSSRSIczMb06+coct3QuqegmV06Lg99T7uxnH53aGc4EgzK062bAAABXklEQVRIx63V2W6DMBBA0SnYsc0OgbAlzb7N/39gFbeKRAkDBt+nPB1NNCMMZI/mFCaMJeGpecDctiXHd7zczkKeNf6rfpordxd7uXdTxYvxQ7FnqHD8GDdyggQHSgIDJsLBounKDYluUxXhUowrJjIrJFtNZI40c4SR/EbWlTrHNBOfVVXLxh9YsszRqFz2l79THI3jatdVvBRnlXaues2QKCSuka3h3YVC2LeANfGPL5PuJNRfqywavSM/pkfREQPFv6vfkKPo6IE2eknjo4wN5FHDMLl6Bbr966fkg+MEDMkc0LnkMgO44nIGr1DaYEoobDAFODYYB5gNhgG3wXBIbTApRDaYCJQNRsHeBrMH4SxnHAGgcHEKAAK+VOH6oZFLGQmvRLFMKQTo/GSJkvjwV5bOV9IM3vn5XCX3O094NU+pdtCtPZgjhxb6ZTJk0wkWygwGEu3XxNruE/YD6t9ijjcy+L4AAAAASUVORK5CYII=") no-repeat 50%
+}
+
+.image-upload-container.w-640-h-280 .img > p img {
+  width: 229px;
+  height: 100px
+}
+
+.image-upload-container.w-750-h-220 .img > p {
+  width: 341px;
+  height: 100px;
+  background: #d8d8d8 url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAAAuCAMAAACiV5+BAAAAgVBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9d3yJTAAAAKnRSTlMAS/Di+/hZBYSSRSIczMb06+coct3QuqegmV06Lg99T7uxnH53aGc4EgzK062bAAABXklEQVRIx63V2W6DMBBA0SnYsc0OgbAlzb7N/39gFbeKRAkDBt+nPB1NNCMMZI/mFCaMJeGpecDctiXHd7zczkKeNf6rfpordxd7uXdTxYvxQ7FnqHD8GDdyggQHSgIDJsLBounKDYluUxXhUowrJjIrJFtNZI40c4SR/EbWlTrHNBOfVVXLxh9YsszRqFz2l79THI3jatdVvBRnlXaues2QKCSuka3h3YVC2LeANfGPL5PuJNRfqywavSM/pkfREQPFv6vfkKPo6IE2eknjo4wN5FHDMLl6Bbr966fkg+MEDMkc0LnkMgO44nIGr1DaYEoobDAFODYYB5gNhgG3wXBIbTApRDaYCJQNRsHeBrMH4SxnHAGgcHEKAAK+VOH6oZFLGQmvRLFMKQTo/GSJkvjwV5bOV9IM3vn5XCX3O094NU+pdtCtPZgjhxb6ZTJk0wkWygwGEu3XxNruE/YD6t9ijjcy+L4AAAAASUVORK5CYII=") no-repeat 50%
+}
+
+.image-upload-container.w-750-h-220 img {
+  height: 100px
+}
+
+.image-upload-container.w-750-h-220 .upload-area {
+  height: 112px
+}
+
+.image-upload-container.w-750-h-220 {
+  height: 134px
+}
+
+.image-upload-container.w-225-h-140 {
+  display: inline-block;
+  width: 500px
+}
+
+.image-upload-container.w-225-h-140 .img > p {
+  width: 161px;
+  height: 100px;
+  background: #d8d8d8 url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAAAuCAMAAACiV5+BAAAAgVBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9d3yJTAAAAKnRSTlMAS/Di+/hZBYSSRSIczMb06+coct3QuqegmV06Lg99T7uxnH53aGc4EgzK062bAAABXklEQVRIx63V2W6DMBBA0SnYsc0OgbAlzb7N/39gFbeKRAkDBt+nPB1NNCMMZI/mFCaMJeGpecDctiXHd7zczkKeNf6rfpordxd7uXdTxYvxQ7FnqHD8GDdyggQHSgIDJsLBounKDYluUxXhUowrJjIrJFtNZI40c4SR/EbWlTrHNBOfVVXLxh9YsszRqFz2l79THI3jatdVvBRnlXaues2QKCSuka3h3YVC2LeANfGPL5PuJNRfqywavSM/pkfREQPFv6vfkKPo6IE2eknjo4wN5FHDMLl6Bbr966fkg+MEDMkc0LnkMgO44nIGr1DaYEoobDAFODYYB5gNhgG3wXBIbTApRDaYCJQNRsHeBrMH4SxnHAGgcHEKAAK+VOH6oZFLGQmvRLFMKQTo/GSJkvjwV5bOV9IM3vn5XCX3O094NU+pdtCtPZgjhxb6ZTJk0wkWygwGEu3XxNruE/YD6t9ijjcy+L4AAAAASUVORK5CYII=") no-repeat 50%
+}
+
+.image-upload-container.w-225-h-140 .img > p img {
+  width: 100%;
+  height: 100px
+}
+
+.image-upload-container.w-225-h-140 .upload-area {
+  height: 112px
+}
+
+.no-virtual-url {
+  font-size: 14px;
+  margin-bottom: 20px
+}
+
+.input-required {
+  position: relative
+}
+
+.multiple-credit-first .input-group-addon {
+  padding: 0 32px
+}
+
+.multiple-credit {
+  margin-top: 10px
+}
+
+.multiple-credit .input-group-addon {
+  padding: 0 32px
+}
+
+.input-required:before {
+  position: absolute;
+  content: "*";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  color: red;
+  left: -15px;
+  top: 13.5px
+}
+
+.multiple-input-box {
+  width: 300px
+}
+
+.label-style {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 140px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #444;
+  line-height: 34px;
+  text-align: right;
+  padding-right: 10px
+}
+
+.pl20 {
+  padding-left: 140px !important
+}
+
+.tip2-time {
+  margin-left: 25px !important
+}
+
+.time-setting-tip .form-group-tip {
+  color: red;
+  font-size: 12px
+}
+
+.tip-modal .modal-footer {
+  text-align: right
+}
+
+.tip-modal .modal-footer .btn {
+  margin-right: 20px
+}
+
+.tip-modal .modal-footer {
+  text-align: right
+}
+
+.tip-modal .modal-footer .btn {
+  margin-right: 100px
+}
+
+.tip-modal .modal-footer p {
+  text-align: center;
+  font-size: 14px;
+  margin: 0 0 0 -20px;
+  line-height: 1.5
+}
+
+.distpicker-address-wrapper {
+  display: inline-block;
+}
+
+.distpicker-address-wrapper select {
+  width: 120px !important;
+  height: 34px;
+  padding: 0 10px;
+  font-size: 14px;
+  margin-right: 15px;
+}
+
+.w40 {
+  width: 40%;
+  display: inline-block;
+}
+.goods-info .logo{
+    color: #fff;
+    padding: 3px;
+    margin: 2px 4px;
+    border-radius: 3px;
+    display: inline-block;
+    background-color: #85bdfe;
+}
+.goods-info .goods-credit{
+    display: inline-block;
+}
+.posr .tooltip.top.delete{
+  top: -34px;
+  left: -13px;
+}

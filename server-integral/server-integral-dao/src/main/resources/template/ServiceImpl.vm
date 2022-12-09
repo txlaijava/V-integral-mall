@@ -1,0 +1,22 @@
+package ${packageName}.service.impl;
+
+import com.shopping.base.foundation.base.service.impl.BaseServiceImpl;
+import ${packageName}.service.I${model}Service;
+import ${packageName}.dao.model.${model};
+import lombok.extern.log4j.Log4j2;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+/**
+* 类描述：${model}Service 实现
+*
+* @author：GuoFuJun
+* @date：${ctime}.
+*/
+@Service
+@Transactional(rollbackFor = Exception.class)
+@Log4j2
+public class ${model}ServiceImpl extends BaseServiceImpl<${model},Long> implements I${model}Service {
+
+
+}

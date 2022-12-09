@@ -1,0 +1,15 @@
+package $!{packageName}.service;
+
+import com.shopping.base.foundation.base.service.IBaseService;
+import $!{packageName}.dao.model.${model};
+
+
+/**
+* 类描述：$!{model}Service 接口
+*
+* @author：GuoFuJun
+* @date：$!{ctime}.
+*/
+public interface I${model}Service extends IBaseService<${model},Long> {
+
+}

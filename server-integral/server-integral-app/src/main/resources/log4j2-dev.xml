@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="All">
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <appender name="dubboAppender" class="org.apache.log4j.DailyRollingFileAppender">
+            <param name="File" value="E:/dubbo.log" />
+            <param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+            <layout class="org.apache.log4j.PatternLayout">
+                <param name="ConversionPattern"
+                       value="[%d{MMdd HH:mm:ss SSS\} %-5p] [%t] %c{3\} - %m%n" />
+            </layout>
+        </appender>
+    </Appenders>
+    <Loggers>
+        <!-- level:日志输出级别，共有8个级别，按照从低到高为：All < Trace < Debug < Info < Warn < Error < Fatal < OFF. -->
+        <Root level="Info">
+            <AppenderRef ref="loghubAppender1" level="Warn"/>
+            <AppenderRef ref="loghubAppender2" level="Info"/>
+            <!-- 控制台输出 -->
+            <AppenderRef ref="STDOUT" level="All"/>
+        </Root>
+        <logger name="com.alibaba.dubbo" additivity="false">
+            <priority value ="info"/>
+            <appender-ref ref="dubboAppender" />
+        </logger>
+    </Loggers>
+</Configuration>

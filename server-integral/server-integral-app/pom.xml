@@ -1,0 +1,147 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.shopping.integral</groupId>
+    <artifactId>server-integral-app</artifactId>
+    <packaging>jar</packaging>
+    <name>integral-app</name>
+    <version>1.0.0</version>
+    <url>http://maven.apache.org</url>
+
+    <parent>
+        <artifactId>server-integral</artifactId>
+        <groupId>com.shopping</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.rednet.base</groupId>
+            <artifactId>base-core</artifactId>
+            <version>${base-core.version}</version>
+        </dependency>
+
+        <!-- Exclude Spring Boot's Default Logging -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.rednet.framework</groupId>
+            <artifactId>spring-boot-starter-swagger</artifactId>
+            <version>${spring-boot-starter-swagger.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.rednet.framework</groupId>
+            <artifactId>spring-boot-starter-druid</artifactId>
+            <version>${spring-boot-starter-druid.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.rednet.framework</groupId>
+            <artifactId>spring-boot-starter-redis</artifactId>
+            <version>${spring-boot-starter-redis.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.shopping.integral</groupId>
+            <artifactId>server-integral-common</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.shopping.integral</groupId>
+            <artifactId>server-integral-dao</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.shopping.integral</groupId>
+            <artifactId>server-integral-service</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <!-- dubbo Start -->
+
+        <!-- Dubbo -->
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>${dubbo.version}</version>
+        </dependency>
+
+        <!-- Dubbo Registry Nacos -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo-registry-nacos</artifactId>
+            <version>0.0.2</version>
+        </dependency>
+
+
+        <!-- dubbo End -->
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.shopping.Application</mainClass>
+                    <executable>true</executable>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Docker maven plugin -->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.4.11</version>
+                <configuration>
+                    <imageName>${project.artifactId}</imageName>
+                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+            <!-- Docker maven plugin -->
+        </plugins>
+    </build>
+</project>

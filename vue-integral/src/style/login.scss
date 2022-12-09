@@ -1,0 +1,266 @@
+
+#app {
+  .login-page {
+    height: 100%;
+    .page-title-wrap .error-tip-wrap {
+      position: absolute;
+      height: 50px;
+      bottom: -50px;
+      line-height: 50px;
+      width: 100%;
+      text-align: center;
+      background: #ffe4e4;
+      box-shadow: 0 5px 10px 0 rgba(84,84,84,.039);
+      .error-txt {
+        font-size: 16px;
+        color: #e82020;
+      }
+    }
+    .header-wrap {
+      background: #fff;
+      height: 78px;
+      position: relative;
+      font-size: 16px;
+    }
+    .header-wrap .rblc-logo {
+      display: block;
+      position: absolute;
+      top: 20px;
+      left: 40px;
+      width: 298px;
+      height: 42px;
+      background: url('../../../static/rblc_login_logo.png') no-repeat;
+    }
+    .header-wrap{
+      .right-side {
+        position: absolute;
+        right: 34px;
+        top: 42px;
+      }
+    }
+    .txt-success, a.txt-success {
+      color: #09a78f;
+    }
+    .page-title-wrap {
+      position: relative;
+      background: #fff;
+      text-align: center;
+      height: 172px;
+      box-shadow: 0 5px 10px 0 rgba(84, 84, 84, .039);
+      &.signup{
+        height: 132px;
+        .title-txt{
+          padding-top: 44px;
+        }
+      }
+      .title-txt {
+        font-size: 32px;
+        padding-top: 80px;
+        display: block;
+      }
+    }
+    .form-wrap {
+      width: 500px;
+      margin: 0 auto;
+      padding: 100px 0;
+      &.signup{
+        padding: 50px 0;
+      }
+      .vertify-code {
+        position: relative;
+        padding-right: 155px;
+        margin-bottom: 20px;
+        .btn-warning {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 140px;
+        }
+      }
+      .input-wrap {
+        position: relative;
+        .input-default {
+          padding-left: 55px;
+        }
+      }
+      .input-default:focus {
+        border: 2px solid #666;
+      }
+      p {
+        margin-bottom: 20px;
+      }
+      .helper-wrap {
+        position: relative;
+        margin: 24px 0 30px;
+        font-size: 16px;
+        .forgetpassword-txt {
+          position: absolute;
+          right: 0;
+          top: 3px;
+        }
+        .sunacout-txt {
+          right: 90px;
+          position: absolute;
+          top: 3px;
+        }
+
+        .sunacout-txt:after {
+          content: "\3000|";
+        }
+      }
+      .input-default {
+        outline: 0;
+        width: 100%;
+        color: #444;
+        font-size: 18px;
+        border: 2px solid transparent;
+        height: 58px;
+        padding: 0 22px;
+        border-radius: 4px;
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      .input-default::-webkit-input-placeholder{
+        /* WebKit browsers */
+        color: #b9b9b9;
+      }
+      .input-default:-moz-placeholder{
+        /* Mozilla Firefox 4 to 18 */
+        color: #b9b9b9;
+      }
+      .input-default::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        color: #b9b9b9;
+      }
+      .input-default:-ms-input-placeholder{
+        /* Internet Explorer 10+ */
+        color: #b9b9b9;
+      }
+       .input-default:focus+.iconfont {
+        color: #272636!important;
+      }
+      .input-wrap .input-default + .iconfont {
+        color: #999;
+        position: absolute;
+        left: 22px;
+        top: 18px;
+        font-size: 18px;
+      }
+      .btn-checkbox {
+        display: inline-block;
+        background: #fff;
+        width: 22px;
+        height: 22px;
+        border-radius: 4px;
+        text-align: center;
+        line-height: 22px;
+        margin-right: 7px;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        vertical-align: middle;
+        .iconfont {
+          vertical-align: middle;
+          font-size: 14px;
+          color: #05a78e;
+          display: none;
+        }
+      }
+      .btn-checkbox.active .iconfont {
+        display: block;
+      }
+      .btn-checkbox + span {
+        vertical-align: middle;
+      }
+      p:last-child {
+        margin-bottom: 0;
+      }
+      .validate-txt.valid-txt, .validate-txt.valid-txt .iconfont {
+        color: #2cad99;
+      }
+      .validate-txt.invalid-txt,.validate-txt.invalid-txt .iconfont {
+        color: #d84040;
+      }
+      .validate-txt .iconfont {
+        font-size: 18px;
+        vertical-align: middle;
+        position: relative;
+      }
+      .validate-txt .iconfont:after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 2px;
+        left: 2px;
+        background: #fff;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+      }
+      .validate-txt {
+        font-size: 15px;
+        padding-left: 10px;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        -webkit-transform: translateX(100%) translateY(-50%);
+        transform: translateX(100%) translateY(-50%);
+      }
+      .validate-txt .iconfont+span {
+        vertical-align: middle;
+      }
+    }
+    .form-wrap.forget-password {
+      padding: 80px 0!important;
+      text-align: center;
+    }
+    .form-wrap.reset-password .email-title {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+    .btn-l.btn-lg {
+      font-size: 24px;
+      height: 62px;
+      line-height: 62px;
+    }
+    .btn-l.btn-primary {
+      background: #3b3b3c !important;
+    }
+    .btn-l {
+      width: 100%;
+      display: inline-block;
+      color: #fff;
+      text-align: center;
+      border-radius: 4px;
+      border: 0;
+      box-sizing: border-box;
+      height: 58px;
+      line-height: 58px;
+      font-size: 18px;
+      &.disabled,&[disabled]{
+        cursor: not-allowed;
+        background: #bdbdbd !important;
+        color: #fff;
+      }
+    }
+    .btn-l.btn-warning {
+      background: #fa8c6a;
+    }
+    .btn-return {
+      color: #09a78f;
+      .icon-return+span {
+        font-size: 14px;
+        vertical-align: middle;
+      }
+      .icon-return {
+        display: inline-block;
+        margin-right: 2px;
+        vertical-align: middle;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- 父项目的坐标:如果项目中没有规定某个元素的值,那么父项目中的对应值即为项目的默认值. 坐标包括group ID,artifact ID和
+         version. -->
+    <modelVersion>4.0.0</modelVersion>              <!--声明项目描述符遵循哪一个POM模型版本.模型本身的版本很少改变,虽然如此,但它仍然是必不可少的,这是为了当Maven引入了新的特性或者其他模型变更的时候,确保稳定性. -->
+    <groupId>com.shopping</groupId>                 <!--项目的全球唯一标识符,通常使用全限定的包名区分该项目和其他项目.并且构建时生成的路径也是由此生成, 如com.mycompany.app生成的相对路径为:/com/mycompany/app. -->
+    <artifactId>server-integral</artifactId>        <!--被继承的父项目的构件标识符. -->
+    <version>1.0.0-SNAPSHOT</version>               <!--项目当前版本,格式为:主版本.次版本.增量版本-限定版本号. -->
+    <packaging>pom</packaging>                      <!--项目产生的构件类型,例如jar,war,ear,pom.插件可以创建他们自己的构件类型,所以前面列的不是全部构件类型. -->
+    <name>server-integral</name>                    <!--项目的名称,Maven产生的文档用. -->
+    <url>http://maven.apache.org</url>              <!--项目主页的URL,Maven产生的文档用. -->
+    <description>server-integral -- 积分商城</description>        <!--项目描述信息. -->
+
+    <parent>
+        <groupId>com.rednet.parent</groupId>
+        <artifactId>parent-project</artifactId>
+        <version>1.0.1-SNAPSHOT</version>
+        <relativePath/>
+    </parent>
+
+    <modules>
+        <module>server-integral-common</module>
+        <module>server-integral-dao</module>
+        <module>server-integral-platform</module>
+        <module>server-integral-service</module>
+        <module>server-integral-app</module>
+    </modules>
+
+    <!-- 以值替代名称，Properties可以在整个POM中使用，也可以作为触发条件（见settings.xml配置文件里
+         activation元素的说明）。格式是<name>value</name>。 -->
+    <properties>
+        <UserAgentUtils.version>1.21</UserAgentUtils.version>
+        <spring-boot-velocity.version>1.4.7.RELEASE</spring-boot-velocity.version>
+        <commons-email.version>1.5</commons-email.version>
+        <!-- environment version setting -->
+        <jdk.version>1.8</jdk.version>
+        <server-integral.version>1.0.0</server-integral.version>
+        <shopping-rblc.version>1.0.0.RELEASE</shopping-rblc.version>
+        <shopping-framework.version>1.0.0.RELEASE</shopping-framework.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+
+    <!-- 继承自该项目的所有子项目的默认依赖信息。这部分的依赖信息不会被立即解析,而是当子项目声明一个依赖
+        （必须描述group ID和artifact ID信息），如果group ID和artifact ID以外的一些信息没有描述，则通过
+            group ID和artifact ID匹配到这里的依赖，并使用这里的依赖信息。 -->
+    <dependencyManagement>
+        <!-- 该元素描述了项目相关的所有依赖。 这些依赖组成了项目构建过程中的一个个环节。它们自动从项目定义的仓库中下载。要获取更多信息，请看项目依赖机制。 -->
+        <dependencies>
+            <dependency>
+                <groupId>com.rednet.base</groupId>
+                <artifactId>base-core</artifactId>
+                <version>${base-core.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.shopping.integral</groupId>
+                <artifactId>server-integral-common</artifactId>
+                <version>${server-integral.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.shopping.integral</groupId>
+                <artifactId>server-integral-dao</artifactId>
+                <version>${server-integral.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.shopping.integral</groupId>
+                <artifactId>server-integral-service</artifactId>
+                <version>${server-integral.version}</version>
+            </dependency>
+
+            <!--Velocity starter -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-velocity</artifactId>
+                <version>${spring-boot-velocity.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>1.2.3</version>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+
+            <!-- 获取User Agent用户代理:解析客户端操作系统、浏览器等 -->
+            <dependency>
+                <groupId>eu.bitwalker</groupId>
+                <artifactId>UserAgentUtils</artifactId>
+                <version>${UserAgentUtils.version}</version>
+            </dependency>
+
+            <!-- commons-email -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-email</artifactId>
+                <version>${commons-email.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-validator</groupId>
+                <artifactId>commons-validator</artifactId>
+                <version>1.4.0</version>
+            </dependency>
+
+            <!-- 日志服务Start -->
+            <!-- Log4j2 异步支持 -->
+            <dependency>
+                <groupId>com.lmax</groupId>
+                <artifactId>disruptor</artifactId>
+                <version>3.3.6</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java</artifactId>
+                <version>2.5.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-web</artifactId>
+                <version>2.11.2</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aliyun.openservices</groupId>
+                <artifactId>aliyun-log-log4j2-appender</artifactId>
+                <version>0.1.11</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>28.0-jre</version>
+            </dependency>
+            <!-- 日志服务End -->
+
+        </dependencies>
+    </dependencyManagement>
+</project>

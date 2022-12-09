@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.shopping.integral</groupId>
+    <artifactId>server-integral-common</artifactId>
+    <packaging>jar</packaging>
+    <name>rblc Components integral-common</name>
+    <version>1.0.0</version>
+    <url>http://maven.apache.org</url>
+
+    <parent>
+        <artifactId>server-integral</artifactId>
+        <groupId>com.shopping</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.rednet.base</groupId>
+            <artifactId>base-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.rednet.framework</groupId>
+            <artifactId>spring-boot-starter-pay</artifactId>
+            <version>${spring-boot-starter-pay.version}</version>
+        </dependency>
+
+        <!-- 消息模块 -->
+        <dependency>
+            <groupId>com.rednet.framework</groupId>
+            <artifactId>spring-boot-starter-sms</artifactId>
+            <version>${spring-boot-starter-sms.version}</version>
+        </dependency>
+
+        <!--Velocity starter -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-velocity</artifactId>
+        </dependency>
+
+        <!-- 获取User Agent用户代理:解析客户端操作系统、浏览器等 -->
+        <dependency>
+            <groupId>eu.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+        </dependency>
+
+        <!-- commons-email -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-email</artifactId>
+        </dependency>
+    </dependencies>
+</project>

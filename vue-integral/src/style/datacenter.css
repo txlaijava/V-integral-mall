@@ -1,0 +1,97 @@
+.content{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-flex:1;-ms-flex:auto;flex:auto;}
+.page-header{margin:40px 0 30px;font-size:14px;}
+/*.page-padding{background:#fff;padding:30px 28px}*/
+.datacenter .type-tabs+.reporttitle{margin-top:20px;}
+.datacenter .reporttitle{display:inline-block;color:#444;font-weight:700;font-size:14px;}
+.datacenter .reporttitle span{color:#888;font-weight:400;}
+.datacenter .reporttabs{display:inline-block;margin-left:20px;}
+.datacenter .reporttabs .btn{padding:0 25px;}
+.datacenter .download{color:#444;font-size:14px;}
+.datacenter .download .iconfont{padding-right:8px;color:#6b6b6b;}
+.datacenter .download:hover,.datacenter .download:hover .iconfont{color:#29b6b0 !important;}
+.datacenter .line{margin:0 15px;width:1px;height:15px;border-left:1px dotted #ccc;}
+.datacenter .reportfilter{margin-top:20px;margin-bottom:30px;height:34px;line-height:34px;}
+.datacenter .reportfilter .date-range{margin-right:10px;margin-bottom:30px;line-height:1;}
+.datacenter .reportfilter a{font-weight:700;font-size:14px;}
+.datacenter .reportline{margin:30px 0;height:1px;border-bottom:1px dashed #d8d8d8;}
+.datacenter .reportchart{margin:20px 0;padding:10px;height:440px;border-radius:8px;//background:#fff;}
+.datacenter .report-box{display:inline-block;padding:0 21px;width:45%;height:440px;vertical-align:top;}
+.datacenter .report-box .chart{height:241px;}
+.datacenter .report-box .text-list{margin-top:40px;border-top:1px dotted #eee;color:#444;font-size:14px;}
+.datacenter .report-box .text-list .text-item{display:inline-block;overflow:hidden;margin:26px 0 0 8%;width:40%;max-width:40%;vertical-align:top;text-overflow:ellipsis;white-space:nowrap;}
+.datacenter-app .import-btn{position:absolute;top:0;right:0;color:#444;font-weight:400;font-size:14px;line-height:34px;}
+.datacenter-app .import-btn .iconfont{color:#6b6b6b;}
+.datacenter-app .import-btn:hover,.datacenter-app .import-btn:hover .iconfont{color:#29b6b0;}
+.chart-line{border-right:1px dotted #eee;}
+.grade{display:inline-block;margin-right:10px;width:20px;height:20px;border-radius:20px;background-color:#f35b58;color:#fff;text-align:center;font-size:12px;line-height:20px;}
+.grade.grade-chart.grade1{background-color:#f35a7f;}
+.grade.grade-chart.grade2{background-color:#f9a454;}
+.grade.grade-chart.grade3{background-color:#f0d652;}
+.grade.grade-chart.grade4{background-color:#53b062;}
+.grade.grade-chart.grade5{background-color:#42b893;}
+.grade.grade-chart.grade6{background-color:#7ab4ee;}
+.grade.grade-chart.grade7{background-color:#7b8fef;}
+.grade.grade-chart.grade8{background-color:#976beb;}
+.grade.grade-chart.grade9{background-color:#cb9df8;}
+.grade.grade-pie{background-color:#f36969;}
+.grade.grade-pie.grade1{background-color:#ffbe5f;}
+.grade.grade-pie.grade2{background-color:#52c79f;}
+.grade.grade-pie.grade3{background-color:#659af0;}
+.grade.grade-pie.grade4{background-color:#8276d8;}
+.grade.grade-pie.grade5{background-color:#6b6b6b;}
+
+/*contentdata*/
+.page-padding{box-sizing:border-box;padding:30px 28px;min-height:900px;background:#fff;}
+.contentdata .bottomline{padding-bottom:20px;}
+.contentdata .download,.daily-data .download{color:#444;font-size:14px;font-weight: 700;font-size: 14px;line-height: 34px;}
+.contentdata .download .iconfont,.daily-data .download .iconfont{padding-right:8px;color:#6b6b6b;}
+.contentdata .download:hover,.contentdata .download:hover .iconfont,.daily-data .download:hover,.daily-data .download:hover .iconfont{color:#29b6b0 !important;}
+.contentdata .checkbox-control, .contentdata .form-control, .contentdata .select-group{margin-right: 10px;float: left;}
+.contentdata .title-control{width:180px;display: inline-block;}
+.contentdata .select-group{width:120px;margin-bottom: 20px;}
+.contentdata .btn-filter{box-sizing: initial;}
+.contentdata .tr-header span{position:relative;display:inline-block;padding-right:15px;cursor:pointer;}
+.contentdata .tr-header span:after,.contentdata .tr-header span:before{position:absolute;right:0;border:4px solid transparent;content:"";}
+.contentdata .tr-header span:before{top:6px;border-bottom-color:#444;}
+.contentdata .tr-header span:after{bottom:6px;border-top-color:#444;}
+
+/*datacenter-app*/
+.datacenter-app .type-tabs{padding-bottom:20px;border-bottom:1px dashed #d8d8d8;}
+.datacenter-app .type-item{position:relative;float:left;padding:0 20px;}
+.datacenter-app .type-item:first-child{padding-left:0;}
+.datacenter-app .type-item:first-child:before{display:none;}
+.datacenter-app .type-item:before{position:absolute;top:7px;left:0;width:0;height:16px;border-left:1px dotted #ccc;content:"";}
+.datacenter-app .type-item>a{position:relative;display:block;padding:0 15px;border:1px solid #ccc;border-radius:2px;background-color:#fff;color:#444;font-size:14px;line-height:28px;}
+.datacenter-app .type-item>a:hover{border-color:#888;}
+.datacenter-app .type-item>a.active{border-color:#29b6b0;background-color:#29b6b0;color:#fff !important;}
+.datacenter-app .type-item>a.active:before{position:absolute;bottom:-10px;left:50%;margin-left:-2px;border:5px solid transparent;content:"";border-top-color:#29b6b0;}
+.datacenter-app .type-item>a.active:hover{border-color:#15c8c0;background-color:#15c8c0;color: #fff !important;}
+.datacenter-app .type-item>a.active:hover:before{border-top-color:#15c8c0;}
+.datacenter-app .import-btn{position:absolute;top:0;right:0;color:#444;font-weight:400;font-size:14px;line-height:34px;}
+
+/*daily-data*/
+
+
+.tr-header th{ font-weight: 400;text-align: center;white-space:nowrap;}
+.tr-header th:first-child,.tr-items td:first-child{text-align: left;}
+.tr-items td{text-align: center;padding-top: 20px;padding-bottom: 20px;}
+tbody tr:nth-child(2n){ background: #f9f9f9;}
+.tr-items:hover{ background: #f2f2f2;}
+.text-list {
+  margin-top: 40px;
+  border-top: 1px dotted #eee;
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 3rem;
+}
+.text-item {
+  margin-right: -30rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+  vertical-align: top;
+  margin: 26px 0 0 8%;
+  width: 30%;
+  max-width: 40%;
+}

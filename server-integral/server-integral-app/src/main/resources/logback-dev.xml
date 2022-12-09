@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!--======================================= 本地变量 ======================================== -->
+    <!--在没有定义${LOG_HOME}系统变量的时候，可以设置此本地变量。提交测试、上线时，要将其注释掉，使用系统变量。 -->
+    <!-- <property name="LOG_HOME" value="D:/data/logs" /> -->
+
+    <!-- 应用名称：和统一配置中的项目代码保持一致（小写） -->
+    <property name="APP_NAME" value="elk" />
+    <!--日志文件保留天数 -->
+    <property name="LOG_MAX_HISTORY" value="7" />
+    <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径 -->
+    <!--应用日志文件保存路径 -->
+    <property name="LOG_APP_HOME" value="${APP_NAME}/integral" />
+    <property name="log.error.log.level" value="WARN" />
+    <!--logstash端口 -->
+    <property name="logstash.port" value="192.168.198.106:5000" />
+
+    <!--=========================== 按照每天生成日志文件：默认配置=================================== -->
+    <!-- 控制台输出 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- 按照每天生成日志文件：主项目日志 -->
+    <appender name="APP" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--日志文件输出的文件名 -->
+            <FileNamePattern>${LOG_APP_HOME}/ocean_platfrom.%d{yyyy-MM-dd}.log
+            </FileNamePattern>
+            <!--日志文件保留天数 -->
+            <MaxHistory>${LOG_MAX_HISTORY}</MaxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{500} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>${log.error.log.level}</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_APP_HOME}/elk-error.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>${LOG_MAX_HISTORY}</maxHistory>
+        </rollingPolicy>
+        <encoder charset="UTF-8">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{500} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- 日志输出到LOGSTASH -->
+    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>${logstash.port}</destination>
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder" />
+    </appender>
+    <!--=============================== 日志输出: 默认主业务日志 ====================================== -->
+    <logger name="org.springframework.data">
+        <level value="info" />
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="APP" />
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="ERROR" />
+        <!-- 屏蔽直接使用LOGSTASH 转为使用filebeats -->
+        <!--<appender-ref ref="LOGSTASH" />-->
+    </root>
+</configuration>

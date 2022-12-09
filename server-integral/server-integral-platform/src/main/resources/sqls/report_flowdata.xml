@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sqlMap>
+    <sqls>
+        <entry>
+            <key>allFlowdata</key>
+            <description>总流量数据</description>
+            <value><![CDATA[
+SELECT sum(a.rd_uv)+sum(a.rg_uv)as UV,sum(a.rd_pv)+sum(a.rg_pv)as PV,date_format(a.report_date,'%m-%d') as data from (
+ SELECT sum(rd.uv)as rd_uv,sum(rd.pv)as rd_pv,0 as rg_uv,0 as rg_pv,rd.report_date
+ from integral_report_dailydata rd
+ where 1=1 ::conding
+ and rd.app_apply_id = :app_apply_id GROUP BY rd.report_date UNION select 0 as rd_uv,0 as rd_pv,sum(rg.uv)as rg_uv,sum(rg.pv)as rg_pv,rg.report_date
+ from integral_report_goods_dailydata rg
+ where 1=1 ::con and rg.app_apply_id = :app_apply_id GROUP BY rg.report_date) a GROUP BY a.report_date
+            ]]></value>
+        </entry>
+
+        <entry>
+            <key>allGoodsFlowdata</key>
+            <description>查询商品流量</description>
+            <value><![CDATA[
+SELECT * FROM
+ (SELECT FORMAT(@rownum \:=@rownum + 1,0) AS NO,e.UV,e.PV,e.goodsName FROM(SELECT @rownum \:= 0) r ,(
+ SELECT a.* from (
+ select sum(rg.uv)as UV,sum(rg.pv)as PV,rg.report_date,rg.goods_name as goodsName
+ from integral_report_goods_dailydata rg
+ where 1=1
+ ::goods_conding
+  and rg.app_apply_id = :app_apply_id
+  GROUP BY rg.goods_id)a
+ ) e ::goods_order
+ ) f LIMIT 6 OFFSET 0
+            ]]></value>
+        </entry>
+    </sqls>
+</sqlMap>

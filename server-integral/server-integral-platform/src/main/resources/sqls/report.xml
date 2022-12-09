@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sqlMap>
+    <sqls>
+        <entry>
+            <key>getUserOrderCountByDay</key>
+            <description>单日用户订单数量</description>
+            <value><![CDATA[
+SELECT od.oid from integral_order od where od.ac_apply_id= :ac_apply_id and DATEDIFF(NOW(),od.add_time) =1 group by dev_user_id
+            ]]></value>
+        </entry>
+        <entry>
+            <key>getAverageIntegral</key>
+            <description>人均积分</description>
+            <value><![CDATA[
+SELECT a.app_key,a.total_credits,a.total_num as add_user,a.total_credits/a.total_num as average_integral from(
+  select u.app_key,sum(u.credits)as total_credits,count(u.id)as total_num from integral_user u
+  where DATEDIFF(NOW(),u.add_time) =1 and u.app_key= :app_key) a
+            ]]></value>
+        </entry>
+        <entry>
+            <key>getIntegralUser</key>
+            <description>积分区间用户</description>
+            <value><![CDATA[
+SELECT a.h,ifnull((b.num),0)as num from v_integral_price a left join ( 
+   SELECT CASE WHEN a.ascredits = 1 then '0-10' 
+   WHEN a.ascredits = 2 then '10-20' 
+   WHEN a.ascredits = 3 then '20-50' 
+   WHEN a.ascredits = 4 then '50-100' 
+   WHEN a.ascredits = 5 then '100-200' 
+   WHEN a.ascredits = 6 then '200-500' 
+   WHEN a.ascredits = 7 then '500-1000' 
+   WHEN a.ascredits = 8 then '1000-5000' 
+   WHEN a.ascredits = 9 then '5000-10000' 
+   WHEN a.ascredits = 10 then '10000-∞' 
+   end  h,a.app_key,count(a.ascredits)as num 
+   from ( 
+   select u.app_key, 
+   CASE WHEN u.credits>=0 and u.credits<=10 THEN 1 
+   WHEN u.credits>=10 and u.credits<=20 THEN 2 
+   WHEN u.credits>=20 and u.credits<=50 THEN 3 
+   WHEN u.credits>=50 and u.credits<=100 THEN 4 
+   WHEN u.credits>=100 and u.credits<=200 THEN 5 
+   WHEN u.credits>=200 and u.credits<=500 THEN 6 
+   WHEN u.credits>=500 and u.credits<=1000 THEN 7 
+   WHEN u.credits>=1000 and u.credits<=5000 THEN 8 
+   WHEN u.credits>=5000 and u.credits<=10000 THEN 9 
+   WHEN u.credits>=10000 THEN 10 
+   end ascredits 
+   from integral_user u 
+   where DATEDIFF(NOW(),u.add_time) =1)a where a.app_key= :app_key GROUP BY a.ascredits)b on a.h = b.h
+            ]]></value>
+        </entry>
+        <entry>
+            <key>getOrderReport</key>
+            <description>查询订单数量,订单消耗积分,订单使用金额</description>
+            <value><![CDATA[
+SELECT count(og.id)as order_total,sum(og.order_goods_integral_price)as integral_total,og.order_goods_name,sum(og.order_goods_price)as price_total,od.ac_apply_id
+ from integral_order_goods og left join integral_order od on og.order_oid = od.oid  where DATEDIFF(NOW(),og.add_time) =1 and od.ac_apply_id = :ac_apply_id
+            ]]></value>
+        </entry>
+        <entry>
+            <key>getContentGoodsData</key>
+            <description>查询内容数据-商品明细</description>
+            <value><![CDATA[
+SELECT * from (SELECT rg.goods_name as commodityTitle,ifnull(sum(rg.order_count),0)as numberOfOrdersCompleted,rg.report_date,
+  ifnull(sum(rg.used_money),0)as consumptionAmount,ifnull(sum(rg.used_integral),0)as consumptionIntegral,ifnull(sum(rg.uv),0)as UV,ifnull(sum(rg.pv),0)as PV
+  from integral_report_goods_dailydata rg
+  ::app_apply_id ::conding
+  GROUP BY rg.goods_id )a ::orderBy
+            ]]></value>
+        </entry>
+        <entry>
+            <key>getBasicFactsDataBeforeYestday</key>
+            <description>查询首页数据-前日数据</description>
+            <value><![CDATA[
+select ifnull(rd.uv,0)as uv,ifnull(rd.pv,0)as pv,ifnull(rd.add_user,0)as add_user,ifnull(rd.order_count,0)as order_count,ifnull(rd.used_integral,0)as used_integral,
+   ifnull(rd.used_money,0)as used_money,ifnull(rd.conversion_ratio,0)as conversion_ratio
+   from integral_report_dailydata rd where DATEDIFF(NOW(),rd.report_date) =2 and rd.app_apply_id=:app_apply_id
+            ]]></value>
+        </entry>
+        <entry>
+            <key>getBasicFactsDataYestday</key>
+            <description>查询首页数据-昨日数据</description>
+            <value><![CDATA[
+select ifnull(rd.uv,0)as uv,ifnull(rd.pv,0)as pv,ifnull(rd.add_user,0)as add_user,ifnull(rd.order_count,0)as order_count,ifnull(rd.used_integral,0)as used_integral,
+   ifnull(rd.used_money,0)as used_money,ifnull(rd.conversion_ratio,0)as conversion_ratio 
+   from integral_report_dailydata rd where DATEDIFF(NOW(),rd.report_date) =1 and rd.app_apply_id=:app_apply_id
+            ]]></value>
+        </entry>
+        <entry>
+            <key>getBasicFactsDataGoodsRemind</key>
+            <description>查询首页数据-商品提醒</description>
+            <value><![CDATA[
+SELECT sum(a.sell_out_goods)as sell_out_goods,sum(a.laca_goods)as laca_goods,sum(a.add_goods)as add_goods from (
+   SELECT g.id,g.ac_apply_id,ifnull(count(*),0)as sell_out_goods,0 as laca_goods,0 as add_goods 
+   from integral_goods g where g.delete_status = 0 
+   and g.goods_state = 1 
+   and g.goods_inventory = 0
+   GROUP BY g.id
+   union
+   SELECT g.id,g.ac_apply_id,0 as sell_out_goods,count(*)as laca_goods,0 as add_goods   
+   from integral_goods g where g.delete_status = 0 
+   and g.goods_state = 1 and g.goods_inventory <= 10
+   GROUP BY g.id
+   union
+   SELECT g.id,g.ac_apply_id,0 as sell_out_goods,0 as laca_goods,count(*)as add_goods  
+   from integral_goods g where g.delete_status = 0 
+   and g.goods_state = 1 
+   and date_format(g.add_time,'%Y-%m-%d') = date_format(now(),'%Y-%m-%d')
+   GROUP BY g.id)a where a.ac_apply_id = :app_apply_id
+            ]]></value>
+        </entry>
+        <entry>
+            <key>getBasicFactsDataOrderRemind</key>
+            <description>查询首页数据-订单提醒</description>
+            <value><![CDATA[
+SELECT sum(a.delivery_order)as delivery_order,sum(a.audited_order)as audited_order from (
+   SELECT count(*)as delivery_order,0 as audited_order,o.ac_apply_id from integral_order o 
+   where o.delete_status = 0 
+   and o.order_state = 30
+   union 
+   SELECT 0 as delivery_order,count(*)as audited_order,o.ac_apply_id from integral_order o 
+   where o.delete_status = 0 
+   and o.order_state = 20)a where a.ac_apply_id=:app_apply_id
+            ]]></value>
+        </entry>
+    </sqls>
+</sqlMap>

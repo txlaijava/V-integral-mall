@@ -1,0 +1,16 @@
+package $!{packageName}.dao;
+
+import $!{packageName}.dao.model.$!{model};
+import com.shopping.base.foundation.data.BaseDao;
+import org.springframework.stereotype.Repository;
+
+/**
+* 类描述：$!{model}DAO 数据访问实现
+*
+* @author：GuoFuJun
+* @date：$!{ctime}.
+*/
+@Repository("$!{modelRepository}DAO")
+public class $!{model}DAO extends BaseDao<$!{model},Long>{
+
+}

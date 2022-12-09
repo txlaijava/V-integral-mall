@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sqlMap>
+    <sqls>
+        <entry>
+            <key>allActivityLinedata</key>
+            <description>活跃数据-折线图sql</description>
+            <value><![CDATA[
+SELECT ::con,date_format(rg.report_date,'%m-%d')as data from integral_report_dailydata rg
+ where 1=1
+ and date_format(rg.report_date,'%Y-%m-%d') >= date_format(:beginTime,'%Y-%m-%d')
+ and date_format(rg.report_date,'%Y-%m-%d') <= date_format(:endTime,'%Y-%m-%d')
+ and rg.app_apply_id = :app_apply_id GROUP BY rg.report_date
+            ]]></value>
+        </entry>
+
+        <entry>
+            <key>allActivityCakedata</key>
+            <description>活跃数据-饼状图sql</description>
+            <value><![CDATA[
+SELECT * FROM (SELECT FORMAT(@rownum \:=@rownum + 1,0) AS NO,e.goodsName, ::conding
+ FROM(SELECT @rownum \:= 0) r,(
+ SELECT ::con,rg.goods_name as goodsName from integral_report_goods_dailydata rg
+ where 1=1 ::time
+ and rg.app_apply_id = :app_apply_id
+  GROUP BY rg.goods_id
+  ) e where ::conding > 0 order BY ::conding desc) f   LIMIT 6 OFFSET 0
+            ]]></value>
+        </entry>
+        <entry>
+            <key>channelRatioData</key>
+            <description>活跃数据-支付渠道占比饼状图sql</description>
+            <value><![CDATA[
+SELECT * FROM 
+ (SELECT FORMAT(@rownum \:=@rownum + 1,0) AS NO,e.channel,e.num
+ FROM (SELECT @rownum \:= 0) r,
+ (SELECT count(*)as num,
+ case when o.channel is null then '其他渠道'
+ when o.channel='APP' then '红商城app'
+ when o.channel='WXAPP' then '微信小程序'
+ when o.channel='WX' then '微信' end as channel
+ from integral_order o
+ where o.order_state in(30,40,50)
+ and date_format(o.add_time,'%Y-%m-%d') >= date_format(:beginTime,'%Y-%m-%d')
+ and date_format(o.add_time,'%Y-%m-%d') <= date_format(:endTime,'%Y-%m-%d') and o.ac_apply_id=:appid
+ GROUP BY o.channel)e)f
+            ]]></value>
+        </entry>
+    </sqls>
+</sqlMap>
